@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+</head>
+<body>
+    
+<div style="margin-bottom: 30px; padding: 20px; border: 3px #41431B solid; border-radius: 20px;">
+
+    <h2 style="margin-bottom: 30px; padding: 5px; color: #41431B;">Bienvenido {{usuario}} al dashboard</h2>
+
+    <a  href="/regest" style="padding:8px 15px; text-decoration:none; border-radius:5px; background-color: #41431B; color: #E3DBBB; font-weight: bolder;">
+        Registrar Estudiantes</a>
+
+    <a  href="/cg" style="padding:8px 15px; text-decoration:none; border-radius:5px; background-color: #41431B; color: #E3DBBB; font-weight: bolder;">
+        Carga Masiva</a>
+
+    <a  href="/logout" style="padding:8px 15px; text-decoration:none; border-radius:5px; background-color: #41431B; color: #E3DBBB; font-weight: bolder;">
+        Cerrar sesión</a>
+</div>
+
+{% if resumen_cargue %}
+<div style="margin-bottom: 25px; padding: 18px; border: 2px solid #41431B; border-radius: 16px; background-color: #F5F1DE;">
+    <h3 style="color: #41431B;">Resumen del cargue masivo</h3>
+    <table style="border-collapse: collapse; width: 350px;">
+        <tr>
+            <th style="text-align: left; padding: 8px; border-bottom: 1px solid #41431B;">Resultado</th>
+            <th style="text-align: left; padding: 8px; border-bottom: 1px solid #41431B;">Cantidad</th>
+        </tr>
+        <tr>
+            <td style="padding: 8px;">Insertados</td>
+            <td style="padding: 8px;">{{resumen_cargue.insertados}}</td>
+        </tr>
+        <tr>
+            <td style="padding: 8px;">Rechazados</td>
+            <td style="padding: 8px;">{{resumen_cargue.rechazados}}</td>
+        </tr>
+        <tr>
+            <td style="padding: 8px;">Duplicados</td>
+            <td style="padding: 8px;">{{resumen_cargue.duplicados}}</td>
+        </tr>
+    </table>
+
+    {% if archivo_rechazados %}
+    <a href="/descargar-rechazados" style="display:inline-block; margin-top:12px; padding:8px 15px; text-decoration:none; border-radius:5px; background-color: #41431B; color: #E3DBBB; font-weight: bolder;">
+        Descargar registros rechazados
+    </a>
+    {% endif %}
+</div>
+{% endif %}
+
+    <iframe src="/dashprincipal/?v={{marca_tiempo}}" width="100%" height="1100px" style="border:none;"></iframe>
+</body>
+</html>
