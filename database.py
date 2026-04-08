@@ -3,10 +3,10 @@ import pandas as pd
 
 def conectar():
     conexion = mysql.connector.connect(
-        host = "localhost",
-        user = "root",
-        password = "",
-        database = "web"
+        host = "mysql-w3bad.alwaysdata.net",
+        user = "w3bad_admin",
+        password = "sexo935",
+        database = "w3bad_115"
     )
     
     return conexion
